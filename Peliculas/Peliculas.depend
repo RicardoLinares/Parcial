@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1538484275 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/director.c
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"director.h"
+	"menuSystem.h"
+	"texto.h"
+
+1538480501 /home/alumno/Documentos/Linares/Parcial/Peliculas/director.h
+
+1538480501 /home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.h
+
+1536670390 /home/alumno/Documentos/Linares/Parcial/Peliculas/texto.h
+
+1538489321 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pelicula.h"
+	"menuSystem.h"
+
+1538490819 /home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.h
+
+1538489083 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.c
+	<stdio.h>
+	<string.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<stdarg.h>
+	<ctype.h>
+	"menuSystem.h"
+
+1538237802 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/texto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	<ctype.h>
+	"texto.h"
+
+1538491934 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.c
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"pelicula.h"
+	"menuSystem.h"
+	"texto.h"
+
