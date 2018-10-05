@@ -1,3 +1,11 @@
+#include <stdio.h>
+#include <stdio_ext.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "menuSystem.h"
+#include "texto.h"
+
 #define OCUPADO 1
 #define DESHABILITADO -1
 #define LIBRE 0
@@ -67,21 +75,88 @@ int ePelicula_buscarPorId(ePelicula[],int, int);
  */
 int ePelicula_alta(ePelicula[],int);
 
+/** \brief
+ *
+ * \param ePelicula[]
+ * \param int
+ * \param char[]
+ * \return int
+ *
+ */
 int ePelicula_baja(ePelicula[],int, char[]);
 
+/** \brief
+ *
+ * \param ePelicula[]
+ * \param int
+ * \param char[]
+ * \return int
+ *
+ */
 int ePelicula_modificacion(ePelicula[],int, char[]);
 
+/** \brief
+ *
+ * \param ePelicula[]
+ * \param int
+ * \return int
+ *
+ */
 int ePelicula_MostrarListado(ePelicula[], int);
 
+/** \brief
+ *
+ * \param ePelicula
+ * \param int
+ * \return int
+ *
+ */
 int ePelicula_Mostrar(ePelicula, int);
 
+/** \brief
+ *
+ * \param ePelicula*
+ * \param int
+ * \return int
+ *
+ */
 int ePelicula_ingresarNombre(ePelicula*, int);
 
+/** \brief
+ *
+ * \param ePelicula*
+ * \param char[]
+ * \param int
+ * \return void
+ *
+ */
 void ePelicula_ingresarAnio(ePelicula*, char[], int);
 
+/** \brief
+ *
+ * \param ePelicula*
+ * \param char[]
+ * \param int
+ * \return void
+ *
+ */
 void ePelicula_ingresarIdDirector(ePelicula*, char[], int);
 
+/** \brief
+ *
+ * \param ePelicula*
+ * \param int
+ * \return int
+ *
+ */
 int ePelicula_ingresarNacionalidad(ePelicula*, int);
 
 
+/** \brief
+ *
+ * \param char[]
+ * \param char
+ * \return int
+ *
+ */
 int ePelicula_confirmacion(char[], char);

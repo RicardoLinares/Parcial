@@ -1,11 +1,5 @@
-#include <stdio.h>
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include "pelicula.h"
-#include "menuSystem.h"
-#include "texto.h"
+
 
 
 int ePelicula_buscarPorId(ePelicula listado[],int limite, int id)
@@ -95,12 +89,7 @@ int ePelicula_alta(ePelicula  listado[],int limite)
         indice = ePelicula_buscarLugarLibre(listado,limite);
         if(indice >= 0)
         {
-            retorno = -3;
             id = ePelicula_siguienteId(listado,limite);
-
-            //if(!getValidString("Nombre?","Error","Overflow", nombre,50,2))
-            //{
-            retorno = 0;
             ePelicula_ingresarNombre(&listado[indice], 0);
             ePelicula_ingresarAnio(&listado[indice], "ingrese año de estreno: ", 0);
             ePelicula_ingresarNacionalidad(&listado[indice], 0);
@@ -108,7 +97,7 @@ int ePelicula_alta(ePelicula  listado[],int limite)
             listado[indice].idPelicula = id;
             listado[indice].estado = OCUPADO;
             ePelicula_Mostrar(listado[indice], 1);
-            //}
+            retorno = 0;
         }
     }
     return retorno;
@@ -257,7 +246,6 @@ int ePelicula_ingresarNombre(ePelicula *estructura, int modificacion)
     char buffer[1024];
     putLineInString(buffer, TAMNOMBRES, "Ingrese el titulo: ");
     toCamelCase(buffer);
-
     if(modificacion)
     {
         modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el año de estreno? (y): ", 'y');
@@ -274,7 +262,6 @@ int ePelicula_ingresarNombre(ePelicula *estructura, int modificacion)
     {
         strcpy(estructura->titulo, buffer);
     }
-
     return retorno;
 }
 
@@ -332,14 +319,6 @@ int ePelicula_MostrarListado(ePelicula listado[], int limite)
     return retorno;
 }
 
-
-/**
-*\brief Pide un numero y despues lo guarda en su direccion de memoria.
-*\param Char[] mensaje para el mensaje
-*\param int* la direccion de memoria de una variable INT.
-*\return Int Se devuelse si se pudo completar el ingreso.
-*
-*/
 void ePelicula_ingresarIdDirector(ePelicula* pelicula, char mensaje[], int modificacion)
 {
     char buffer[1024];

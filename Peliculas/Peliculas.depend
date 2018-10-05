@@ -51,3 +51,40 @@
 	"menuSystem.h"
 	"texto.h"
 
+1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pelicula.h"
+	"menuSystem.h"
+
+1538783673 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.h
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+
+1538779328 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.h
+
+1538779328 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.h
+
+1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.c
+	<stdio.h>
+	<string.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<stdarg.h>
+	<ctype.h>
+	"menuSystem.h"
+
+1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	<ctype.h>
+	"texto.h"
+

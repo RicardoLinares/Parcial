@@ -188,12 +188,8 @@ int eGen_modificacion(eGenerica  listado[],int limite, char mensaje[])
                 }
             }
             while(salir!=1);
-            if(opcion == 'y')
-            {
-                listado[busqueda].estado = DESHABILITADO;
-            }
         }
-                else
+        else
         {
             printf("No se encontro el elemento");
         }
