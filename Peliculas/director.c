@@ -1,23 +1,16 @@
-#include <stdio.h>
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include "director.h"
-#include "menuSystem.h"
-#include "texto.h"
 
 
-int eGen_buscarPorId(eGenerica listado[],int limite, int id)
+
+int eDirector_buscarPorId(eDirector listado[],int limite, int id)
 {
     int retorno = -1;
     int i;
     if(limite > 0 && listado != NULL)
     {
-        retorno = -2;
         for(i=0; i<limite; i++)
         {
-            if(listado[i].estado == OCUPADO && listado[i].idGenerica == id)
+            if(listado[i].estado == OCUPADO && listado[i].idDirector == id)
             {
                 retorno = i;
                 break;
@@ -27,7 +20,7 @@ int eGen_buscarPorId(eGenerica listado[],int limite, int id)
     return retorno;
 }
 
-int eGen_init( eGenerica listado[],int limite)
+int eDirector_init( eDirector listado[],int limite)
 {
     int retorno = -1;
     int i;
@@ -37,13 +30,13 @@ int eGen_init( eGenerica listado[],int limite)
         for(i=0; i<limite; i++)
         {
             listado[i].estado= LIBRE;
-            listado[i].idGenerica= 0;
+            listado[i].idDirector= 0;
         }
     }
     return retorno;
 }
 
-int eGen_siguienteId(eGenerica listado[], int limite)
+int eDirector_siguienteId(eDirector listado[], int limite)
 {
     int retorno = 0;
     int i;
@@ -53,9 +46,9 @@ int eGen_siguienteId(eGenerica listado[], int limite)
         {
             if(listado[i].estado == OCUPADO)
             {
-                if(listado[i].idGenerica>retorno)
+                if(listado[i].idDirector>retorno)
                 {
-                    retorno=listado[i].idGenerica;
+                    retorno=listado[i].idDirector;
                 }
             }
         }
@@ -64,7 +57,7 @@ int eGen_siguienteId(eGenerica listado[], int limite)
     return retorno+1;
 }
 
-int eGen_buscarLugarLibre(eGenerica listado[],int limite)
+int eDirector_buscarLugarLibre(eDirector listado[],int limite)
 {
     int retorno = -1;
     int i;
@@ -83,7 +76,7 @@ int eGen_buscarLugarLibre(eGenerica listado[],int limite)
     return retorno;
 }
 
-int eGen_alta(eGenerica  listado[],int limite)
+int eDirector_alta(eDirector  listado[],int limite)
 {
     int retorno = -1;
     int id;
@@ -92,132 +85,96 @@ int eGen_alta(eGenerica  listado[],int limite)
     if(limite > 0 && listado != NULL)
     {
         retorno = -2;
-        indice = eGen_buscarLugarLibre(listado,limite);
+        indice = eDirector_buscarLugarLibre(listado,limite);
         if(indice >= 0)
         {
-            retorno = -3;
-            id = eGen_siguienteId(listado,limite);
-
-            //if(!getValidString("Nombre?","Error","Overflow", nombre,50,2))
-            //{
-            retorno = 0;
-            eGen_ingresarNombre(&listado[indice].nombre);
-            listado[indice].idGenerica = id;
+            id = eDirector_siguienteId(listado,limite);
+            eDirector_ingresarNombre(&listado[indice], 0);
+            listado[indice].idDirector = id;
             listado[indice].estado = OCUPADO;
-            eGen_Mostrar(listado[indice], 1);
-            //}
+            eDirector_Mostrar(listado[indice], 1);
+            retorno = 0;
         }
     }
     return retorno;
 }
 
-int eGen_baja(eGenerica  listado[],int limite, char mensaje[])
+int eDirector_baja(eDirector listado[],int limite, char mensaje[])
 {
     int retorno = -1;
     char opcion;
-    int auxiliar;
+    char buffer[1024];
     int busqueda = -1;
-    if(limite > 0 && listado != NULL)
+    int listaEstado;
+
+    listaEstado = eDirector_MostrarListado(listado, limite);
+    if(listaEstado == 0)
     {
-        printf("%s", mensaje);
-        __fpurge(stdin);
-        scanf("%d", &auxiliar);
-        busqueda = eGen_buscarPorId(listado,limite,auxiliar);
-        if(busqueda >= 0 && busqueda < limite)
+        if(limite > 0 && listado != NULL)
         {
-            eGen_Mostrar(listado[busqueda], 1);
-            printf("Esta Seguro que quiere dar de baja (y): ");
-            __fpurge(stdin);
-            opcion = getchar();
-            opcion = tolower(opcion);
-            if(opcion == 'y')
+            putLineInString(buffer, 1024, mensaje);
+            busqueda = eDirector_buscarPorString(listado,limite,buffer);
+            if(busqueda >= 0 && busqueda < limite)
             {
-                printf("BAJA exitosa");
-                listado[busqueda].estado = DESHABILITADO;
+                eDirector_Mostrar(listado[busqueda], 1);
+                printf("Esta Seguro que quiere dar de baja (y): ");
+                __fpurge(stdin);
+                opcion = getchar();
+                opcion = tolower(opcion);
+                if(opcion == 'y')
+                {
+                    printf("BAJA exitosa");
+                    listado[busqueda].estado = DESHABILITADO;
+                }
             }
-        }
-        else
-        {
-            printf("No se encontro el elemento");
+            else
+            {
+                printf("No se encontro el elemento");
+            }
         }
     }
     return retorno;
 }
 
-
-int eGen_modificacion(eGenerica  listado[],int limite, char mensaje[])
+int eDirector_Mostrar(eDirector estructura, int isAlone)
 {
     int retorno = -1;
-    char opcion;
-    int auxiliar;
-    int salir;
-    int busqueda = -1;
-    if(limite > 0 && listado != NULL)
+    if(isAlone == 1)
     {
-        printf("%s", mensaje);
-        __fpurge(stdin);
-        scanf("%d", &auxiliar);
-        busqueda = eGen_buscarPorId(listado,limite,auxiliar);
-        if(busqueda >= 0 && busqueda < limite)
-        {
-            clearConsoleQuick();
-            do
-            {
-                printf("Que desea modificar de:\n");
-                eGen_Mostrar(listado[busqueda], 1);
-                printListStrings(2,"Modificar Nombre", "Cancelar");
-                opcion = waitsForMenuInput(2, "Eliga su opcion: ");
-
-                switch(opcion)
-                {
-                case 0:
-                    eGen_ingresarNombre(&listado[busqueda]);
-                    salir = 1;
-                    break;
-                case 1:
-                    printf("Modificacion Cancelada\n");
-                    salir = 1;
-                    break;
-                default:
-                    printf("No ingreso una opcion valida\n");
-                    break;
-                }
-                if(!salir)
-                {
-                    clearConsole();
-                }
-            }
-            while(salir!=1);
-        }
-        else
-        {
-            printf("No se encontro el elemento");
-        }
+        printf("%2s %25s\n", "ID", "NOMBRE");
     }
-    return retorno;
-}
-
-
-int eGen_Mostrar(eGenerica estructura, int isAlone)
-{
-    int retorno = -1;
-    if(isAlone == 0)
-    {
-        printf("%15s %10s\n", "NOMBRE", "ID");
-    }
-    printf("%15s %10d\n", estructura.nombre, estructura.idGenerica);
+    printf("%2d %25s\n", estructura.idDirector, estructura.nombre);
     retorno = 0;
     return retorno;
 }
 
-int eGen_ingresarNombre(eGenerica *estructura)
+int eDirector_ingresarNombre(eDirector *estructura, int modificacion)
 {
     int retorno = -1;
-    putLineInString(estructura->nombre, 50, "Ingrese el nombre: ");
-    toCamelCase(estructura->nombre);
+    int modificacionFlag;
+    char buffer[1024];
+    putLineInString(buffer, TAMNOMBRES, "Ingrese el titulo: ");
+    toCamelCase(buffer);
+    if(modificacion)
+    {
+        modificacionFlag = eDirector_confirmacion("Estas Seguro de cambiar el nombre del director? (y): ", 'y');
+        if(modificacionFlag == -1)
+        {
+            printf("Modificacion Cancelada...\n");
+        }
+        else
+        {
+            strcpy(estructura->nombre, buffer);
+        }
+    }
+    else
+    {
+        strcpy(estructura->nombre, buffer);
+    }
     return retorno;
 }
-int eGen_MostrarListado(eGenerica listado[], int limite)
+
+int eDirector_MostrarListado(eDirector listado[], int limite)
 {
     int retorno;
     int indice;
@@ -226,13 +183,77 @@ int eGen_MostrarListado(eGenerica listado[], int limite)
         retorno = -2;
         for(indice = 0; indice < limite; indice++)
         {
+
             if(listado[indice].estado == OCUPADO)
             {
-                eGen_Mostrar(listado[indice], indice);
+                if(indice == 0)
+                {
+                    printf("%2s %25s\n", "ID", "NOMBRE");
+                }
+                eDirector_Mostrar(listado[indice], 0);
+                retorno = 0;
             }
         }
-        retorno = -3;
+    }
+    if(retorno == -2)
+    {
+        printf("No hay director en la lista...\n");
+    }
+    return retorno;
+}
+
+int eDirector_confirmacion(char mensaje[], char llave)
+{
+    int retorno = -1;
+    int opcion;
+    printf("%s", mensaje);
+    __fpurge(stdin);
+    opcion = getchar();
+    opcion = tolower(opcion);
+    llave = tolower(llave);
+    if(opcion == llave)
+    {
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int eDirector_validarListar(eDirector* lista, int limite)
+{
+    int returnValue = -1;
+    int i;
+    if(lista != NULL && limite > 0)
+    {
+        for(i = 0; i < limite; i++)
+        {
+            if(lista[i].estado == OCUPADO)
+            {
+                returnValue = 0;
+                break;
+            }
+        }
     }
 
+
+    return returnValue;
+
+}
+
+int eDirector_buscarPorString(eDirector *listado, int limite, char* nombre)
+{
+    int retorno = -1;
+    int i;
+    if(limite > 0 && listado != NULL)
+    {
+        for(i=0; i<limite; i++)
+        {
+            if(listado[i].estado == OCUPADO && strcicmp(nombre, listado[i].nombre) == 0)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
     return retorno;
+
 }

@@ -1,7 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio_ext.h>
+#include <ctype.h>
 
+#define BUFFER 1024
 
 int putLineInString(char[],int, char[]);
 
 int toCamelCase(char[]);
 
-int fullName(char[], char[], char[]);
+int validateStringToInteger(char*, int);
+
+int validateFormatName(char*,int);
+
+int strcicmp(char const*, char const*);

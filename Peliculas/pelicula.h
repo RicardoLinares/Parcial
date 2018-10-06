@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include "menuSystem.h"
 #include "texto.h"
+#include "director.h"
 
 #define OCUPADO 1
 #define DESHABILITADO -1
@@ -73,7 +74,7 @@ int ePelicula_buscarPorId(ePelicula[],int, int);
  * \return int
  *
  */
-int ePelicula_alta(ePelicula[],int);
+int ePelicula_alta(ePelicula[],int, eDirector[], int);
 
 /** \brief
  *
@@ -83,7 +84,7 @@ int ePelicula_alta(ePelicula[],int);
  * \return int
  *
  */
-int ePelicula_baja(ePelicula[],int, char[]);
+int ePelicula_baja(ePelicula[],int, char[], eDirector[], int);
 
 /** \brief
  *
@@ -93,7 +94,7 @@ int ePelicula_baja(ePelicula[],int, char[]);
  * \return int
  *
  */
-int ePelicula_modificacion(ePelicula[],int, char[]);
+int ePelicula_modificacion(ePelicula[],int, char[], eDirector[], int);
 
 /** \brief
  *
@@ -102,7 +103,7 @@ int ePelicula_modificacion(ePelicula[],int, char[]);
  * \return int
  *
  */
-int ePelicula_MostrarListado(ePelicula[], int);
+int ePelicula_MostrarListado(ePelicula[], int, eDirector[], int);
 
 /** \brief
  *
@@ -111,7 +112,7 @@ int ePelicula_MostrarListado(ePelicula[], int);
  * \return int
  *
  */
-int ePelicula_Mostrar(ePelicula, int);
+int ePelicula_Mostrar(ePelicula, int, eDirector);
 
 /** \brief
  *
@@ -140,7 +141,7 @@ void ePelicula_ingresarAnio(ePelicula*, char[], int);
  * \return void
  *
  */
-void ePelicula_ingresarIdDirector(ePelicula*, char[], int);
+void ePelicula_ingresarIdDirector(ePelicula*, char[], int, eDirector*,int);
 
 /** \brief
  *
@@ -160,3 +161,6 @@ int ePelicula_ingresarNacionalidad(ePelicula*, int);
  *
  */
 int ePelicula_confirmacion(char[], char);
+
+
+int ePelicula_bajaDirector(eDirector[], int, ePelicula[], int);

@@ -1,72 +1,159 @@
+#include <stdio.h>
+#include <stdio_ext.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "menuSystem.h"
+#include "texto.h"
+
 #define OCUPADO 1
 #define DESHABILITADO -1
 #define LIBRE 0
 
+#define TAMNOMBRES 50
+#define TAMNACIONALIDAD 30
+#define DESHABILITADO -1
+
+
 typedef struct
 {
-    char nombre[50];
-    //------------ agregar en base lo que se necesite
-    // int NumeroNatural
-    // int
-    int idGenerica;
+    char nombre[TAMNOMBRES];
+    int idDirector;
     int estado;
-}eGenerica;
-
+}eDirector;
 
 /** \brief Crea un id para un elemento de una estructura, en base la posicion en el array.
  *
- * \param eGenerica[]   el array de estructura.
+ * \param eDirector[]   el array de estructura.
  * \param int la longitud del array.
  * \return int  ID generado.
  *
  */
-int eGen_siguienteId(eGenerica[], int);
+int eDirector_siguienteId(eDirector[], int);
 
 /** \brief Inicializa un array de estructura en un valor de estado libre
  *
- * \param eGenerica[]   el array de estructura a inicializar
+ * \param eDirector[]   el array de estructura a inicializar
  * \param int   el tamanio del array
  * \return int  devuelve si se pudo hacer la operacion
  *
  */
-int eGen_init( eGenerica[], int);
+int eDirector_init( eDirector[], int);
 
 /** \brief Busca un elemento en un array de estructura que tenga el campo estado en LIBRE.
  *
- * \param eGenerica[] el array de estructuras donde esta el elemento
+ * \param eDirector[] el array de estructuras donde esta el elemento
  * \param int   el tamanio del array
  * \return int  la posicion dentro del array del elemento libre
  *
  */
-int eGen_buscarLugarLibre(eGenerica[],int);
+int eDirector_buscarLugarLibre(eDirector[],int);
 
 /** \brief busca en un array de estructura en base un identificardor
  *
- * \param eGenerica[] array de estructura a buscar
+ * \param eDirector[] array de estructura a buscar
  * \param int el tamanio del array
  * \param int  el identificador que se quiere encontrar
  * \return int la posicion del identificador dentro del array(sino devuelve -1 indicando que no existe)
  *
  */
-int eGen_buscarPorId(eGenerica[],int, int);
+int eDirector_buscarPorId(eDirector[],int, int);
 
 /** \brief Ingresa la informacion para un elemento de un array de estructuras
  *
- * \param eGenerica[] el array donde se guardara el elmento
+ * \param eDirector[] el array donde se guardara el elmento
  * \param int  el tamanio del array
  * \return int
  *
  */
-int eGen_alta(eGenerica[],int);
+int eDirector_alta(eDirector[],int);
 
-int eGen_baja(eGenerica[],int, char[]);
+/** \brief
+ *
+ * \param eDirector[]
+ * \param int
+ * \param char[]
+ * \return int
+ *
+ */
+int eDirector_baja(eDirector[],int, char[]);
 
-int eGen_modificacion(eGenerica[],int, char[]);
+/** \brief
+ *
+ * \param eDirector[]
+ * \param int
+ * \param char[]
+ * \return int
+ *
+ */
+int eDirector_modificacion(eDirector[],int, char[]);
 
-int eGen_MostrarListado(eGenerica[], int);
+/** \brief
+ *
+ * \param eDirector[]
+ * \param int
+ * \return int
+ *
+ */
+int eDirector_MostrarListado(eDirector[], int);
 
-int eGen_Mostrar(eGenerica, int);
+/** \brief
+ *
+ * \param eDirector
+ * \param int
+ * \return int
+ *
+ */
+int eDirector_Mostrar(eDirector, int);
 
-int eGen_ingresarNombre(eGenerica*);
+/** \brief
+ *
+ * \param eDirector*
+ * \param int
+ * \return int
+ *
+ */
+int eDirector_ingresarNombre(eDirector*, int);
 
-int eGen_InfoGrid(void);
+/** \brief
+ *
+ * \param eDirector*
+ * \param char[]
+ * \param int
+ * \return void
+ *
+ */
+void eDirector_ingresarAnio(eDirector*, char[], int);
+
+/** \brief
+ *
+ * \param eDirector*
+ * \param char[]
+ * \param int
+ * \return void
+ *
+ */
+void eDirector_ingresarIdDirector(eDirector*, char[], int);
+
+/** \brief
+ *
+ * \param eDirector*
+ * \param int
+ * \return int
+ *
+ */
+int eDirector_ingresarNacionalidad(eDirector*, int);
+
+
+/** \brief
+ *
+ * \param char[]
+ * \param char
+ * \return int
+ *
+ */
+int eDirector_confirmacion(char[], char);
+
+int eDirector_validarListar(eDirector*, int);
+
+int eDirector_buscarPorString(eDirector*, int, char*);

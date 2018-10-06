@@ -1,15 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio_ext.h>
-#include <ctype.h>
 #include "texto.h"
 
 
 
 int putLineInString(char origin[], int size, char mensaje[])
 {
-    char buffer[1024];
+    char buffer[BUFFER];
     int index;
     int stringSize;
     int cadenaInvalida;
@@ -17,7 +12,7 @@ int putLineInString(char origin[], int size, char mensaje[])
     {
         printf("%s", mensaje);
         __fpurge(stdin);
-        fgets(buffer, 1024, stdin);
+        fgets(buffer, BUFFER, stdin);
 
         for(index = 0; index < strlen(buffer); index++)
         {
@@ -43,25 +38,12 @@ int putLineInString(char origin[], int size, char mensaje[])
         {
             cadenaInvalida = 0;
         }
-    }while(cadenaInvalida != 0);
+    }
+    while(cadenaInvalida != 0);
 
     strcpy(origin,buffer);
 
     return 0;
-}
-
-int fullName(char destination[], char originOne[], char originTwo[])
-{
-    int operation;
-
-    strcat(destination, originOne);
-    strcat(destination, ", ");
-    strcat(destination, originTwo);
-
-    operation = 1;
-
-    return operation;
-
 }
 
 int toCamelCase(char origin[])
@@ -87,4 +69,43 @@ int toCamelCase(char origin[])
 
     }
     return 0;
+}
+
+int validateStringToInteger(char* numberString, int length)
+{
+    int returnValue = 0;
+    int i;
+    for(i=0; i<length; i++)
+    {
+        if(length == 1)
+        {
+            returnValue = -1;
+            break;
+        }
+        if(numberString[i] == '\n')
+        {
+            break;
+        }
+        if(!(numberString[i] >= '0' && numberString[i] <= '9'))
+        {
+            returnValue = -1;
+            break;
+        }
+    }
+    return returnValue;
+}
+
+int strcicmp(char const *a, char const *b)
+{
+    for (;; a++, b++) {
+        int d = tolower((unsigned char)*a) - tolower((unsigned char)*b);
+        if (d != 0 || !*a)
+            return d;
+    }
+}
+
+int validateFormatName(char *nameString, int size)
+{
+
+
 }

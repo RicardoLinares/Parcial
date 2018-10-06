@@ -1,30 +1,43 @@
 # depslib dependency file v1.0
-1538484275 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/director.c
+1538840938 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/director.c
+	"director.h"
+
+1538840396 /home/alumno/Documentos/Linares/Parcial/Peliculas/director.h
 	<stdio.h>
 	<stdio_ext.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
-	"director.h"
 	"menuSystem.h"
 	"texto.h"
 
-1538480501 /home/alumno/Documentos/Linares/Parcial/Peliculas/director.h
+1538827383 /home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.h
 
-1538480501 /home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.h
-
-1536670390 /home/alumno/Documentos/Linares/Parcial/Peliculas/texto.h
-
-1538489321 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/main.c
+1538840529 /home/alumno/Documentos/Linares/Parcial/Peliculas/texto.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"pelicula.h"
+	<stdio_ext.h>
+	<ctype.h>
+
+1538841804 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 	"menuSystem.h"
+	"pelicula.h"
 
-1538490819 /home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.h
+1538841829 /home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.h
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+	"director.h"
 
-1538489083 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.c
+1538827383 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.c
 	<stdio.h>
 	<string.h>
 	<stdio_ext.h>
@@ -33,23 +46,11 @@
 	<ctype.h>
 	"menuSystem.h"
 
-1538237802 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/texto.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<stdio_ext.h>
-	<ctype.h>
+1538840649 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/texto.c
 	"texto.h"
 
-1538491934 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.c
-	<stdio.h>
-	<stdio_ext.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
+1538839125 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.c
 	"pelicula.h"
-	"menuSystem.h"
-	"texto.h"
 
 1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
 	<stdio.h>
@@ -86,5 +87,14 @@
 	<string.h>
 	<stdio_ext.h>
 	<ctype.h>
+	"texto.h"
+
+1538833514 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/theatro.c
+	"theatro.h"
+
+1538833532 /home/alumno/Documentos/Linares/Parcial/Peliculas/theatro.h
+	"pelicula.h"
+	"director.h"
+	"menuSystem.h"
 	"texto.h"
 
