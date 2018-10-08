@@ -52,14 +52,14 @@
 1538839125 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.c
 	"pelicula.h"
 
-1538953444 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
+1538992092 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"menuSystem.h"
 	"pelicula.h"
 
-1538938075 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.h
+1538991846 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -81,7 +81,7 @@
 	<string.h>
 	<ctype.h>
 
-1538917300 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.c
+1538991141 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.c
 	"menuSystem.h"
 
 1538937920 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.c
@@ -96,7 +96,7 @@
 	"menuSystem.h"
 	"texto.h"
 
-1538953125 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.c
+1538992230 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.c
 	"director.h"
 
 1538938075 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.h
@@ -107,6 +107,6 @@
 	"menuSystem.h"
 	"texto.h"
 
-1538953078 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.c
+1538992369 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.c
 	"pelicula.h"
 

@@ -167,3 +167,5 @@ int ePelicula_bajaDirector(eDirector[], int, ePelicula[], int);
 int ePelicula_MostrarPeliculasPorIdDirector(eDirector[], int, ePelicula[], int, int);
 
 int ePelicula_bajarPeliculasPorIdDirector(ePelicula[], int, int);
+
+int ePelicula_menu(ePelicula[], int, eDirector[], int);

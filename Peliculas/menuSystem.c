@@ -59,5 +59,5 @@ void clearConsole(void)
 
 void clearConsoleQuick(void)
 {
-    printf("\033[H\033[J");
+    system("cls");
 }

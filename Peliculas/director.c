@@ -3,12 +3,14 @@
 
 int eDirector_hardcode(eDirector listado[], int limite)
 {
+    int returnValue = -1;
     char nuevoDirectores[5][51] = {"Pepito Dual", "Jonny Vacio","Ricardo Linares","Mendoza Firme","Rodrigez Martin"};
 
     int idDirectores[5] = {100, 101, 102, 103, 104};
     int i;
     if(limite>=5)
     {
+        returnValue = 0;
         for(i = 0; i < 5; i++)
         {
             strcpy(listado[i].nombre, nuevoDirectores[i]);
@@ -16,6 +18,7 @@ int eDirector_hardcode(eDirector listado[], int limite)
             listado[i].estado = OCUPADO;
         }
     }
+    return returnValue;
 }
 int eDirector_buscarPorId(eDirector listado[],int limite, int id)
 {
@@ -162,7 +165,7 @@ int eDirector_ingresarNombre(eDirector *estructura, eDirector listado[], int lim
     char buffer[1024];
     do
     {
-        putLineInString(buffer, TAMNOMBRES, "Ingrese el titulo: ");
+        putLineInString(buffer, TAMNOMBRES, "Ingrese el nombre del director: ");
         RemoveSpaces(buffer);
         toCamelCase(buffer);
         invalido = validateFormatName(buffer,TAMNOMBRES);
