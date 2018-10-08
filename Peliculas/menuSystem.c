@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <ctype.h>
 #include "menuSystem.h"
 
 int printListStrings(int size, ...)
@@ -35,7 +29,7 @@ int waitsForMenuInput(int size, char mensaje[])
     int opcion;
     int i;
     printf("%s", mensaje);
-    __fpurge(stdin);
+    fflush(stdin);
     scanf("%d", &opcion);
 
     for(i=0; i<size; i++)
@@ -58,9 +52,9 @@ int waitsForMenuInput(int size, char mensaje[])
 void clearConsole(void)
 {
     printf("\npulse ENTER para continuar...");
-    __fpurge(stdin);
+    fflush(stdin);
     getchar();
-    printf("\033[H\033[J");
+    system("cls");
 }
 
 void clearConsoleQuick(void)

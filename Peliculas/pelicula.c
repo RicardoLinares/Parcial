@@ -1,6 +1,31 @@
 #include "pelicula.h"
 
-
+int ePelicula_hardcode(ePelicula listado[], int limite)
+{
+    char nuevoPeliculas[5][TAMNOMBRES] = {"Volver al Mercado",
+                                          "La caja",
+                                          "dia del Parcial",
+                                          "Mendoza Documental",
+                                          "el senior de los alfajores"
+                                         };
+    int nuevasFechas[5] = {1985,1999,1996,2015,2001};
+    char nacionalidad[5][TAMNACIONALIDAD] = {"Argentina","Argentina","Argentina","Mendocina","Uruguaya"};
+    int idDirectores[5] = {100, 100, 102, 103, 104};
+    int idPeliculas[5] = {50, 51, 52, 53, 54};
+    int i;
+    if(limite>=5)
+    {
+        for(i = 0; i < 5; i++)
+        {
+            strcpy(listado[i].titulo, nuevoPeliculas[i]);
+            strcpy(listado[i].nacionalidad, nacionalidad[i]);
+            listado[i].anio = nuevasFechas[i];
+            listado[i].director = idDirectores[i];
+            listado[i].idPelicula = idPeliculas[i];
+            listado[i].estado = OCUPADO;
+        }
+    }
+}
 
 int ePelicula_buscarPorId(ePelicula listado[],int limite, int id)
 {
@@ -21,7 +46,7 @@ int ePelicula_buscarPorId(ePelicula listado[],int limite, int id)
     return retorno;
 }
 
-int ePelicula_init( ePelicula listado[],int limite)
+int ePelicula_initialize( ePelicula listado[],int limite)
 {
     int retorno = -1;
     int i;
@@ -96,9 +121,10 @@ int ePelicula_alta(ePelicula  listado[],int limite, eDirector listadoDirector[],
                 indice = ePelicula_buscarLugarLibre(listado,limite);
                 if(indice >= 0)
                 {
+                    system("cls");
                     id = ePelicula_siguienteId(listado,limite);
                     ePelicula_ingresarNombre(&listado[indice], 0);
-                    ePelicula_ingresarAnio(&listado[indice], "ingrese año de estreno: ", 0);
+                    ePelicula_ingresarAnio(&listado[indice], "ingrese anio de estreno: ", 0);
                     ePelicula_ingresarNacionalidad(&listado[indice], 0);
                     ePelicula_ingresarIdDirector(&listado[indice],"ingrese el ID del director: ", 0
                                                  , listadoDirector, limiteDirector);
@@ -135,7 +161,7 @@ int ePelicula_baja(ePelicula listado[],int limite, char mensaje[], eDirector lis
         if(limite > 0 && listado != NULL)
         {
             printf("%s", mensaje);
-            __fpurge(stdin);
+            fflush(stdin);
             scanf("%d", &auxiliar);
             busqueda = ePelicula_buscarPorId(listado,limite,auxiliar);
             if(busqueda >= 0 && busqueda < limite)
@@ -143,7 +169,7 @@ int ePelicula_baja(ePelicula listado[],int limite, char mensaje[], eDirector lis
                 idDirector = eDirector_buscarPorId(listadoDirector,limiteDirector, listado[busqueda].director);
                 ePelicula_Mostrar(listado[busqueda], 1, listadoDirector[idDirector]);
                 printf("Esta Seguro que quiere dar de baja (y): ");
-                __fpurge(stdin);
+                fflush(stdin);
                 opcion = getchar();
                 opcion = tolower(opcion);
                 if(opcion == 'y')
@@ -180,7 +206,7 @@ int ePelicula_modificacion(ePelicula  listado[],int limite, char mensaje[], eDir
         if(limite > 0 && listado != NULL)
         {
             printf("%s", mensaje);
-            __fpurge(stdin);
+            fflush(stdin);
             scanf("%d", &auxiliar);
             busqueda = ePelicula_buscarPorId(listado,limite,auxiliar);
             if(busqueda >= 0 && busqueda < limite)
@@ -193,7 +219,7 @@ int ePelicula_modificacion(ePelicula  listado[],int limite, char mensaje[], eDir
                     ePelicula_Mostrar(listado[busqueda], 1, listadoDirector[idDirector]);
                     printListStrings(5
                                      , "Modificar Titulo"
-                                     , "Modificar Año de estreno"
+                                     , "Modificar anio de estreno"
                                      , "Modificar Nacionalidad"
                                      , "Modificar Director"
                                      , "Cancelar");
@@ -206,7 +232,7 @@ int ePelicula_modificacion(ePelicula  listado[],int limite, char mensaje[], eDir
                         salir = 1;
                         break;
                     case 1:
-                        ePelicula_ingresarAnio(&listado[busqueda], "Ingrese el Año de estreno: ", 1);
+                        ePelicula_ingresarAnio(&listado[busqueda], "Ingrese el anio de estreno: ", 1);
                         salir = 1;
                         break;
                     case 2:
@@ -252,9 +278,9 @@ int ePelicula_Mostrar(ePelicula pelicula, int isAlone, eDirector director)
     int retorno = -1;
     if(isAlone == 1)
     {
-        printf("%2s %4s %20s %17s %25s\n", "ID", "AÑO","Nacionalidad", "Director", "NOMBRE");
+        printf("%2s %4s %25s %20s %30s\n", "ID", "ANIO","Nacionalidad", "Director", "NOMBRE");
     }
-    printf("%2d %4d %20s %15s %25s\n", pelicula.idPelicula
+    printf("%2d %4d %25s %20s %30s\n", pelicula.idPelicula
            , pelicula.anio
            , pelicula.nacionalidad
            , director.nombre
@@ -272,7 +298,7 @@ int ePelicula_ingresarNombre(ePelicula *estructura, int modificacion)
     toCamelCase(buffer);
     if(modificacion)
     {
-        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el año de estreno? (y): ", 'y');
+        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el anio de estreno? (y): ", 'y');
         if(modificacionFlag == -1)
         {
             printf("Modificacion Cancelada...\n");
@@ -286,6 +312,7 @@ int ePelicula_ingresarNombre(ePelicula *estructura, int modificacion)
     {
         strcpy(estructura->titulo, buffer);
     }
+    system("cls");
     return retorno;
 }
 
@@ -299,7 +326,7 @@ int ePelicula_ingresarNacionalidad(ePelicula *estructura, int modificacion)
 
     if(modificacion)
     {
-        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el año de estreno? (y): ", 'y');
+        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el anio de estreno? (y): ", 'y');
         if(modificacionFlag == -1)
         {
             printf("Modificacion Cancelada...\n");
@@ -313,7 +340,7 @@ int ePelicula_ingresarNacionalidad(ePelicula *estructura, int modificacion)
     {
         strcpy(estructura->nacionalidad, buffer);
     }
-
+    system("cls");
     return retorno;
 }
 int ePelicula_MostrarListado(ePelicula listado[], int limite, eDirector listadoDirectores[], int limiteDirectores)
@@ -328,9 +355,9 @@ int ePelicula_MostrarListado(ePelicula listado[], int limite, eDirector listadoD
         {
             if(listado[indice].estado == OCUPADO)
             {
-                if(indice == 0)
+                if(retorno == -2)
                 {
-                    printf("%2s %4s %20s %17s %25s\n", "ID", "AÑO","Nacionalidad", "Director", "NOMBRE");
+                    printf("%2s %4s %25s %20s %30s\n", "ID", "ANIO","Nacionalidad", "Director", "NOMBRE");
                 }
                 idDirector = eDirector_buscarPorId(listadoDirectores,limiteDirectores, listado[indice].director);
                 ePelicula_Mostrar(listado[indice], 0, listadoDirectores[idDirector]);
@@ -346,7 +373,7 @@ int ePelicula_MostrarListado(ePelicula listado[], int limite, eDirector listadoD
 }
 
 void ePelicula_ingresarIdDirector(ePelicula* pelicula, char mensaje[], int modificacion,
-                                  eDirector* listaDirector, int tamanioDirector)
+                                  eDirector* listaDirector, int limiteDirector)
 {
     char buffer[1024];
     int invalido;
@@ -356,8 +383,9 @@ void ePelicula_ingresarIdDirector(ePelicula* pelicula, char mensaje[], int modif
     do
     {
         invalido = 0;
+        eDirector_MostrarListado(listaDirector, limiteDirector);
         printf("%s", mensaje);
-        __fpurge(stdin);
+        fflush(stdin);
         fgets(buffer,1024,stdin);
 
         longitud = strlen(buffer);
@@ -378,17 +406,20 @@ void ePelicula_ingresarIdDirector(ePelicula* pelicula, char mensaje[], int modif
             }
             else
             {
-                invalido = eDirector_buscarPorId(listaDirector, tamanioDirector, auxiliar);
-
+                invalido = eDirector_buscarPorId(listaDirector, limiteDirector, auxiliar);
+                if(invalido == -1)
+                {
+                    printf("ERROR: el id no esta en la lista :\n");
+                }
             }
         }
-
+        system("cls");
     }
     while(invalido == -1);
 
     if(modificacion)
     {
-        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el año de estreno? (y): ", 'y');
+        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el anio de estreno? (y): ", 'y');
         if(modificacionFlag == -1)
         {
             printf("Modificacion Cancelada...\n");
@@ -416,7 +447,7 @@ void ePelicula_ingresarAnio(ePelicula* pelicula, char mensaje[], int modificacio
     {
         invalido = 0;
         printf("%s", mensaje);
-        __fpurge(stdin);
+        fflush(stdin);
         fgets(buffer,1024,stdin);
         longitud = strlen(buffer);
 
@@ -429,18 +460,18 @@ void ePelicula_ingresarAnio(ePelicula* pelicula, char mensaje[], int modificacio
         else
         {
             auxiliar = atoi(buffer);
-            if(auxiliar < 1990 || auxiliar > 2020)
+            if(auxiliar < 1980 || auxiliar > 2020)
             {
                 printf("ERROR: Fecha de estreno invalida( se valida con 1990-2020):\n");
                 invalido = -1;
             }
         }
-
+        system("cls");
     }
     while(invalido == -1);
     if(modificacion)
     {
-        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el año de estreno? (y): ", 'y');
+        modificacionFlag = ePelicula_confirmacion("Estas Seguro de cambiar el anio de estreno? (y): ", 'y');
         if(modificacionFlag == -1)
         {
             printf("Modificacion Cancelada...\n");
@@ -461,7 +492,7 @@ int ePelicula_confirmacion(char mensaje[], char llave)
     int retorno = -1;
     int opcion;
     printf("%s", mensaje);
-    __fpurge(stdin);
+    fflush(stdin);
     opcion = getchar();
     opcion = tolower(opcion);
     llave = tolower(llave);
@@ -475,18 +506,80 @@ int ePelicula_confirmacion(char mensaje[], char llave)
 int ePelicula_bajaDirector(eDirector listadoDirector[], int limiteDirector, ePelicula listado[], int limite)
 {
     int returnValue = -1;
-    int bajaExitosaFlag;
-    int i;
+    char opcion;
+    int indexDirector;
+    int idDirector;
+    int funcionExitosaFlag;
     printf("ADVERTENCIA: al eliminar a un director se deshabilitaran sus peliculas.\n");
 
-    bajaExitosaFlag = eDirector_baja(listadoDirector, limite, "Ingrese el nombre del director: ");
-    if(bajaExitosaFlag == 0) // la baja fue exitosa
+    indexDirector = eDirector_baja(listadoDirector, limite, "Ingrese el nombre del director: ");
+    if(indexDirector != -1)
     {
-        for(i = 0; i < limite; i++)
+        idDirector = listadoDirector[indexDirector].idDirector;
+        eDirector_Mostrar(listadoDirector[indexDirector], 1);
+        printf("\nSe van a Eliminar las siguientes peliculas:\n");
+        funcionExitosaFlag = ePelicula_MostrarPeliculasPorIdDirector(listadoDirector, limiteDirector,listado, limite, idDirector);
+        if(funcionExitosaFlag != 0)
         {
+            printf("Este director no tiene peliculas...\n");
+        }
+        printf("Esta Seguro que quiere dar de baja (y): ");
+        fflush(stdin);
+        opcion = getchar();
+        opcion = tolower(opcion);
+        if(opcion == 'y')
+        {
+            listadoDirector[indexDirector].estado = DESHABILITADO;
+            ePelicula_bajarPeliculasPorIdDirector(listado,limite,idDirector);
         }
 
     }
 
+    return returnValue;
+}
+
+int ePelicula_MostrarPeliculasPorIdDirector(eDirector listadoDirector[], int limiteDirector,
+        ePelicula listado[], int limite, int idDirector)
+{
+    int retorno;
+    int indice;
+    if(limite > 0 && listado != NULL)
+    {
+        retorno = -2;
+        for(indice = 0; indice < limite; indice++)
+        {
+            if(listado[indice].estado == OCUPADO)
+            {
+                if(listado[indice].director == idDirector)
+                {
+                    if(indice == 0)
+                    {
+                        printf("%2s %4s %20s %17s %25s\n", "ID", "ANIO","Nacionalidad", "Director", "NOMBRE");
+                    }
+                    idDirector = eDirector_buscarPorId(listadoDirector,limiteDirector, listado[indice].director);
+                    ePelicula_Mostrar(listado[indice], 0, listadoDirector[idDirector]);
+                    retorno = 0;
+                }
+            }
+        }
+    }
+    return retorno;
+}
+
+int ePelicula_bajarPeliculasPorIdDirector(ePelicula listado[], int limite, int idDirector)
+{
+    int returnValue = -2;
+    int indice;
+    if(limite > 0 && listado != NULL)
+    {
+        returnValue = -1;
+        for(indice = 0; indice < limite; indice++)
+        {
+            if(listado[indice].director == idDirector)
+            {
+                listado[indice].estado = DESHABILITADO;
+            }
+        }
+    }
     return returnValue;
 }

@@ -11,7 +11,7 @@ int putLineInString(char origin[], int size, char mensaje[])
     do
     {
         printf("%s", mensaje);
-        __fpurge(stdin);
+        fflush(stdin);
         fgets(buffer, BUFFER, stdin);
 
         for(index = 0; index < strlen(buffer); index++)
@@ -53,6 +53,10 @@ int toCamelCase(char origin[])
 
     for(index = 0; index < strlen(origin) && origin[index] != '\0'; index++)
     {
+        if(origin[index] == ' ' && firstLetterFlag == 1)
+        {
+
+        }
         if(origin[index] == ' ')
         {
             firstLetterFlag = 1;
@@ -95,17 +99,66 @@ int validateStringToInteger(char* numberString, int length)
     return returnValue;
 }
 
-int strcicmp(char const *a, char const *b)
+int strcicmp(char const *cadenaUno, char const *cadenaDos)
 {
-    for (;; a++, b++) {
-        int d = tolower((unsigned char)*a) - tolower((unsigned char)*b);
-        if (d != 0 || !*a)
-            return d;
+    int comparacion;
+    for (;; cadenaUno++, cadenaDos++)
+    {
+        comparacion = tolower((unsigned char)*cadenaUno) - tolower((unsigned char)*cadenaDos);
+        if (comparacion != 0 || !*cadenaUno)
+            return comparacion;
     }
 }
 
 int validateFormatName(char *nameString, int size)
 {
+    int returnValue = 0;
+    int i;
 
+    for(i=0; i<size; i++)
+    {
+        if(size < 1)
+        {
+            returnValue = -1;
+            break;
+        }
+        if(nameString[i] == '\0')
+        {
+            break;
+        }
+        if(isalpha(nameString[0]) == 0)
+        {
+            printf("ERROR: Solo se permiten letras del abecedario\n");
 
+            returnValue = -2;
+            break;
+        }
+    }
+    return returnValue;
+}
+
+void RemoveSpaces(char* source)
+{
+    char* i = source;
+    char* j = source;
+    int firstLetterFlag = 1;
+    do
+    {
+        *i = *j++;
+        if(*i != ' ')
+        {
+            firstLetterFlag = 0;
+            i++;
+        }
+        else
+        {
+            if(firstLetterFlag == 0)
+            {
+                firstLetterFlag = 1;
+                i++;
+            }
+        }
+    }
+    while(*j != 0); // mientras no el caracter J no sea \0
+    *i = 0;
 }

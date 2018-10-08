@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -46,7 +45,7 @@ int ePelicula_siguienteId(ePelicula[], int);
  * \return int  devuelve si se pudo hacer la operacion
  *
  */
-int ePelicula_init( ePelicula[], int);
+int ePelicula_initialize( ePelicula[], int);
 
 /** \brief Busca un elemento en un array de estructura que tenga el campo estado en LIBRE.
  *
@@ -164,3 +163,7 @@ int ePelicula_confirmacion(char[], char);
 
 
 int ePelicula_bajaDirector(eDirector[], int, ePelicula[], int);
+
+int ePelicula_MostrarPeliculasPorIdDirector(eDirector[], int, ePelicula[], int, int);
+
+int ePelicula_bajarPeliculasPorIdDirector(ePelicula[], int, int);

@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -11,7 +10,6 @@
 #define LIBRE 0
 
 #define TAMNOMBRES 50
-#define TAMNACIONALIDAD 30
 #define DESHABILITADO -1
 
 
@@ -38,7 +36,7 @@ int eDirector_siguienteId(eDirector[], int);
  * \return int  devuelve si se pudo hacer la operacion
  *
  */
-int eDirector_init( eDirector[], int);
+int eDirector_initialize( eDirector[], int);
 
 /** \brief Busca un elemento en un array de estructura que tenga el campo estado en LIBRE.
  *
@@ -82,16 +80,6 @@ int eDirector_baja(eDirector[],int, char[]);
  *
  * \param eDirector[]
  * \param int
- * \param char[]
- * \return int
- *
- */
-int eDirector_modificacion(eDirector[],int, char[]);
-
-/** \brief
- *
- * \param eDirector[]
- * \param int
  * \return int
  *
  */
@@ -113,17 +101,8 @@ int eDirector_Mostrar(eDirector, int);
  * \return int
  *
  */
-int eDirector_ingresarNombre(eDirector*, int);
+int eDirector_ingresarNombre(eDirector*, eDirector[], int);
 
-/** \brief
- *
- * \param eDirector*
- * \param char[]
- * \param int
- * \return void
- *
- */
-void eDirector_ingresarAnio(eDirector*, char[], int);
 
 /** \brief
  *
@@ -135,14 +114,6 @@ void eDirector_ingresarAnio(eDirector*, char[], int);
  */
 void eDirector_ingresarIdDirector(eDirector*, char[], int);
 
-/** \brief
- *
- * \param eDirector*
- * \param int
- * \return int
- *
- */
-int eDirector_ingresarNacionalidad(eDirector*, int);
 
 
 /** \brief
@@ -157,3 +128,5 @@ int eDirector_confirmacion(char[], char);
 int eDirector_validarListar(eDirector*, int);
 
 int eDirector_buscarPorString(eDirector*, int, char*);
+
+int eDirector_validarNombreRepetido(eDirector*, int, char*);

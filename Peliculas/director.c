@@ -1,7 +1,22 @@
 #include "director.h"
 
 
+int eDirector_hardcode(eDirector listado[], int limite)
+{
+    char nuevoDirectores[5][51] = {"Pepito Dual", "Jonny Vacio","Ricardo Linares","Mendoza Firme","Rodrigez Martin"};
 
+    int idDirectores[5] = {100, 101, 102, 103, 104};
+    int i;
+    if(limite>=5)
+    {
+        for(i = 0; i < 5; i++)
+        {
+            strcpy(listado[i].nombre, nuevoDirectores[i]);
+            listado[i].idDirector = idDirectores[i];
+            listado[i].estado = OCUPADO;
+        }
+    }
+}
 int eDirector_buscarPorId(eDirector listado[],int limite, int id)
 {
     int retorno = -1;
@@ -20,7 +35,7 @@ int eDirector_buscarPorId(eDirector listado[],int limite, int id)
     return retorno;
 }
 
-int eDirector_init( eDirector listado[],int limite)
+int eDirector_initialize( eDirector listado[],int limite)
 {
     int retorno = -1;
     int i;
@@ -89,7 +104,7 @@ int eDirector_alta(eDirector  listado[],int limite)
         if(indice >= 0)
         {
             id = eDirector_siguienteId(listado,limite);
-            eDirector_ingresarNombre(&listado[indice], 0);
+            eDirector_ingresarNombre(&listado[indice], listado, limite);
             listado[indice].idDirector = id;
             listado[indice].estado = OCUPADO;
             eDirector_Mostrar(listado[indice], 1);
@@ -102,7 +117,6 @@ int eDirector_alta(eDirector  listado[],int limite)
 int eDirector_baja(eDirector listado[],int limite, char mensaje[])
 {
     int retorno = -1;
-    char opcion;
     char buffer[1024];
     int busqueda = -1;
     int listaEstado;
@@ -113,19 +127,11 @@ int eDirector_baja(eDirector listado[],int limite, char mensaje[])
         if(limite > 0 && listado != NULL)
         {
             putLineInString(buffer, 1024, mensaje);
+            RemoveSpaces(buffer);
             busqueda = eDirector_buscarPorString(listado,limite,buffer);
             if(busqueda >= 0 && busqueda < limite)
             {
-                eDirector_Mostrar(listado[busqueda], 1);
-                printf("Esta Seguro que quiere dar de baja (y): ");
-                __fpurge(stdin);
-                opcion = getchar();
-                opcion = tolower(opcion);
-                if(opcion == 'y')
-                {
-                    printf("BAJA exitosa");
-                    listado[busqueda].estado = DESHABILITADO;
-                }
+                retorno = busqueda;
             }
             else
             {
@@ -148,29 +154,41 @@ int eDirector_Mostrar(eDirector estructura, int isAlone)
     return retorno;
 }
 
-int eDirector_ingresarNombre(eDirector *estructura, int modificacion)
+int eDirector_ingresarNombre(eDirector *estructura, eDirector listado[], int limite)
 {
     int retorno = -1;
-    int modificacionFlag;
+    int alreadyExist;
+    int invalido;
     char buffer[1024];
-    putLineInString(buffer, TAMNOMBRES, "Ingrese el titulo: ");
-    toCamelCase(buffer);
-    if(modificacion)
+    do
     {
-        modificacionFlag = eDirector_confirmacion("Estas Seguro de cambiar el nombre del director? (y): ", 'y');
-        if(modificacionFlag == -1)
+        putLineInString(buffer, TAMNOMBRES, "Ingrese el titulo: ");
+        RemoveSpaces(buffer);
+        toCamelCase(buffer);
+        invalido = validateFormatName(buffer,TAMNOMBRES);
+        switch(invalido)
         {
-            printf("Modificacion Cancelada...\n");
+        case -1:
+            printf("ERROR: la cadena ingresada es muy corta");
+            break;
+        case -2:
+            printf("ERROR: No se permiten numeros para los nombres");
+            break;
+        case -3:
+            printf("ERROR: El nombre debe empezar con una letra");
+            break;
         }
-        else
+        alreadyExist = eDirector_buscarPorString(listado,limite,buffer);
+        if(alreadyExist != -1)
         {
-            strcpy(estructura->nombre, buffer);
+            invalido = -1;
+            printf("ERROR: este director ya existe.\n");
         }
     }
-    else
-    {
-        strcpy(estructura->nombre, buffer);
-    }
+    while(invalido!=0);
+
+    strcpy(estructura->nombre, buffer);
+
     return retorno;
 }
 
@@ -186,7 +204,7 @@ int eDirector_MostrarListado(eDirector listado[], int limite)
 
             if(listado[indice].estado == OCUPADO)
             {
-                if(indice == 0)
+                if(retorno == -2)
                 {
                     printf("%2s %25s\n", "ID", "NOMBRE");
                 }
@@ -207,7 +225,7 @@ int eDirector_confirmacion(char mensaje[], char llave)
     int retorno = -1;
     int opcion;
     printf("%s", mensaje);
-    __fpurge(stdin);
+    fflush(stdin);
     opcion = getchar();
     opcion = tolower(opcion);
     llave = tolower(llave);
@@ -247,7 +265,7 @@ int eDirector_buscarPorString(eDirector *listado, int limite, char* nombre)
     {
         for(i=0; i<limite; i++)
         {
-            if(listado[i].estado == OCUPADO && strcicmp(nombre, listado[i].nombre) == 0)
+            if(listado[i].estado == OCUPADO && stricmp(nombre, listado[i].nombre) == 0)
             {
                 retorno = i;
                 break;

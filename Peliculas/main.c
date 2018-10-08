@@ -3,16 +3,18 @@
 #include <string.h>
 #include "menuSystem.h"
 #include "pelicula.h"
-#define PELICULAS_TAMANIO 3
-#define DIRECTOR_TAMANIO 3
+#define PELICULAS_TAMANIO 1000
+#define DIRECTOR_TAMANIO 500
 
 int main()
 {
     ePelicula listadoPeliculas[PELICULAS_TAMANIO];
-    ePelicula_init(listadoPeliculas, PELICULAS_TAMANIO);
-
     eDirector listadoDirector[DIRECTOR_TAMANIO];
-    eDirector_init(listadoDirector,DIRECTOR_TAMANIO);
+
+    ePelicula_initialize(listadoPeliculas, PELICULAS_TAMANIO);
+    eDirector_initialize(listadoDirector,DIRECTOR_TAMANIO);
+    eDirector_hardcode(listadoDirector,DIRECTOR_TAMANIO);
+    ePelicula_hardcode(listadoPeliculas,PELICULAS_TAMANIO);
 
     int option;
     int proceso;
@@ -20,9 +22,9 @@ int main()
     do
     {
         printf("Peliculas del teatro:\n");
-        printListStrings(8, "ALTAS PELÍCULAS:"
-                         , "MODIFICAR DATOS DE UNA PELÍCULA:"
-                         , "BAJA DE PELÍCULA:"
+        printListStrings(8, "ALTAS PELICULAS:"
+                         , "MODIFICAR DATOS DE UNA PELICULA:"
+                         , "BAJA DE PELICULA:"
                          , "NUEVO DIRECTOR:"
                          , "ELIMINAR DIRECTOR:"
                          , "LISTAR PELICULAS:"
@@ -55,7 +57,7 @@ int main()
             }
             break;
         case 4:
-            eDirector_baja(listadoDirector, DIRECTOR_TAMANIO, "Ingrese el nombre del director: ");
+            ePelicula_bajaDirector(listadoDirector,DIRECTOR_TAMANIO,listadoPeliculas,PELICULAS_TAMANIO);
             break;
         case 5:
             proceso = ePelicula_MostrarListado(listadoPeliculas, PELICULAS_TAMANIO, listadoDirector,

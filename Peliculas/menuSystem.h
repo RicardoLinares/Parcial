@@ -1,3 +1,10 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <ctype.h>
+
+
 /** \brief Crea la visual de un menu. se enumera con letras
  *
  * \param int  cantidad de opciones

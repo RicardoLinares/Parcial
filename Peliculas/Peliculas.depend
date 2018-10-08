@@ -52,41 +52,39 @@
 1538839125 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.c
 	"pelicula.h"
 
-1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
+1538953444 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"pelicula.h"
 	"menuSystem.h"
+	"pelicula.h"
 
-1538783673 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.h
+1538938075 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.h
 	<stdio.h>
-	<stdio_ext.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"menuSystem.h"
 	"texto.h"
+	"director.h"
 
-1538779328 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.h
-
-1538779328 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.h
-
-1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.c
+1538867697 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.h
 	<stdio.h>
 	<string.h>
-	<stdio_ext.h>
 	<stdlib.h>
 	<stdarg.h>
 	<ctype.h>
-	"menuSystem.h"
 
-1538779328 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.c
+1538936770 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<stdio_ext.h>
 	<ctype.h>
+
+1538917300 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.c
+	"menuSystem.h"
+
+1538937920 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.c
 	"texto.h"
 
 1538833514 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/theatro.c
@@ -97,4 +95,18 @@
 	"director.h"
 	"menuSystem.h"
 	"texto.h"
+
+1538953125 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.c
+	"director.h"
+
+1538938075 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+
+1538953078 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.c
+	"pelicula.h"
 
