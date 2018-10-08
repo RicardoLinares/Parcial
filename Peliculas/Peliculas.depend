@@ -110,3 +110,52 @@
 1538992369 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.c
 	"pelicula.h"
 
+1538992444 source:d:\linares\parcial-master\peliculas\director.c
+	"director.h"
+
+1539001674 d:\linares\parcial-master\peliculas\director.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+
+1539002653 d:\linares\parcial-master\peliculas\menusystem.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdarg.h>
+	<ctype.h>
+
+1538992444 d:\linares\parcial-master\peliculas\texto.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1538992444 source:d:\linares\parcial-master\peliculas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"menuSystem.h"
+	"pelicula.h"
+
+1539009951 d:\linares\parcial-master\peliculas\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+	"director.h"
+
+1539009382 source:d:\linares\parcial-master\peliculas\menusystem.c
+	"menuSystem.h"
+
+1539010379 source:d:\linares\parcial-master\peliculas\pelicula.c
+	"pelicula.h"
+
+1538992444 source:d:\linares\parcial-master\peliculas\texto.c
+	"texto.h"
+

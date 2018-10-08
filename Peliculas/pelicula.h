@@ -29,6 +29,10 @@ typedef struct
     int estado;
 }ePelicula;
 
+
+
+int ePelicula_hardcode(ePelicula[], int);
+
 /** \brief Crea un id para un elemento de una estructura, en base la posicion en el array.
  *
  * \param ePelicula[]   el array de estructura.
@@ -169,3 +173,19 @@ int ePelicula_MostrarPeliculasPorIdDirector(eDirector[], int, ePelicula[], int, 
 int ePelicula_bajarPeliculasPorIdDirector(ePelicula[], int, int);
 
 int ePelicula_menu(ePelicula[], int, eDirector[], int);
+
+int ePelicula_menuConsultar(ePelicula[], int, eDirector[], int);
+
+int ePelicula_MostrarPeliculasAntiguas(ePelicula[], int, eDirector[], int);
+
+int ePelicula_buscarMayorAntiguedad(ePelicula[], int);
+
+int ePelicula_MostrarListadoDirectorConPeliculas(ePelicula[], int , eDirector[], int);
+
+int ePelicula_buscarDirectorCantidadDePeliculas(ePelicula[], int , eDirector[], int);
+
+int ePelicula_calcularPeliculasPorDirector(eDirector, ePelicula[], int);
+
+int ePelicula_mostrarPeliculasConDirectores(ePelicula[], int, eDirector[], int);
+
+int ePelicula_MostrarPeliculaDirector(ePelicula, int, eDirector);

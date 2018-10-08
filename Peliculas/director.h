@@ -20,6 +20,8 @@ typedef struct
     int estado;
 }eDirector;
 
+int eDirector_hardcode(eDirector[], int);
+
 /** \brief Crea un id para un elemento de una estructura, en base la posicion en el array.
  *
  * \param eDirector[]   el array de estructura.
