@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1543242745 source:c:\users\alumno\desktop\parcial2\controller.c
+	"controller.h"
+
+1543242070 c:\users\alumno\desktop\parcial2\controller.h
+	"LinkedList.h"
+	"Employee.h"
+
+1543240612 c:\users\alumno\desktop\parcial2\linkedlist.h
+
+1543240114 c:\users\alumno\desktop\parcial2\employee.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543243273 source:c:\users\alumno\desktop\parcial2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Employee.h"
+
+1543243456 source:c:\users\alumno\desktop\parcial2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543242037 source:c:\users\alumno\desktop\parcial2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"controller.h"
+

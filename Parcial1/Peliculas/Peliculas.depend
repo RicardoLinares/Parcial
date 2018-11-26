@@ -1,0 +1,161 @@
+# depslib dependency file v1.0
+1538840938 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/director.c
+	"director.h"
+
+1538840396 /home/alumno/Documentos/Linares/Parcial/Peliculas/director.h
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+
+1538827383 /home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.h
+
+1538840529 /home/alumno/Documentos/Linares/Parcial/Peliculas/texto.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	<ctype.h>
+
+1538841804 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"menuSystem.h"
+	"pelicula.h"
+
+1538841829 /home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.h
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+	"director.h"
+
+1538827383 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/menuSystem.c
+	<stdio.h>
+	<string.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<stdarg.h>
+	<ctype.h>
+	"menuSystem.h"
+
+1538840649 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/texto.c
+	"texto.h"
+
+1538839125 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/pelicula.c
+	"pelicula.h"
+
+1538992092 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"menuSystem.h"
+	"pelicula.h"
+
+1538991846 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+	"director.h"
+
+1538867697 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdarg.h>
+	<ctype.h>
+
+1538936770 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1538991141 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\menusystem.c
+	"menuSystem.h"
+
+1538937920 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\texto.c
+	"texto.h"
+
+1538833514 source:/home/alumno/Documentos/Linares/Parcial/Peliculas/theatro.c
+	"theatro.h"
+
+1538833532 /home/alumno/Documentos/Linares/Parcial/Peliculas/theatro.h
+	"pelicula.h"
+	"director.h"
+	"menuSystem.h"
+	"texto.h"
+
+1538992230 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.c
+	"director.h"
+
+1538938075 c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\director.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+
+1538992369 source:c:\users\relinoylli\desktop\proyectosfacu\parcial\peliculas\pelicula.c
+	"pelicula.h"
+
+1538992444 source:d:\linares\parcial-master\peliculas\director.c
+	"director.h"
+
+1539001674 d:\linares\parcial-master\peliculas\director.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+
+1539002653 d:\linares\parcial-master\peliculas\menusystem.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdarg.h>
+	<ctype.h>
+
+1538992444 d:\linares\parcial-master\peliculas\texto.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1538992444 source:d:\linares\parcial-master\peliculas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"menuSystem.h"
+	"pelicula.h"
+
+1539009951 d:\linares\parcial-master\peliculas\pelicula.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menuSystem.h"
+	"texto.h"
+	"director.h"
+
+1539009382 source:d:\linares\parcial-master\peliculas\menusystem.c
+	"menuSystem.h"
+
+1539010379 source:d:\linares\parcial-master\peliculas\pelicula.c
+	"pelicula.h"
+
+1538992444 source:d:\linares\parcial-master\peliculas\texto.c
+	"texto.h"
+
